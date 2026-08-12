@@ -17,8 +17,8 @@ export const termuxFileCommands: Command[] = [
       },
       {
         command: 'ls -la ~/storage',
-        output: 'drwx------  3 root root 4096 Nov  1 12:00 .\ndrwx------  4 root root 4096 Nov  1 12:00 ..\n-rw-------  1 root root    0 Nov  1 12:00 shared'
-        // Removed trailing comma here
+        output: 'drwx------  3 root root 4096 Nov  1 12:00 .\ndrwx------  4 root root 4096 Nov  1 12:00 ..\n-rw-------  1 root root    0 Nov  1 12:00 shared',
+        explanation: 'Lists all files (including hidden) in long format inside the storage directory.'
       }
     ],
     options: [
