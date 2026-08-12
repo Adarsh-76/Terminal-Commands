@@ -3,10 +3,12 @@ import GlassCard from '../components/ui/GlassCard';
 import Badge from '../components/ui/Badge';
 import SearchBar from '../components/forms/SearchBar';
 import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
-import { Terminal, Clock, ArrowRight } from 'lucide-react';
+import { usePwaInstall } from '../hooks/usePwaInstall';
+import { Terminal, Clock, ArrowRight, Download, Smartphone } from 'lucide-react';
 
 export default function Home() {
   const { recentCommands } = useRecentlyViewed();
+  const { canInstall, promptToInstall } = usePwaInstall();
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -20,6 +22,30 @@ export default function Home() {
         <SearchBar />
       </div>
 
+      {/* PWA Install Banner */}
+      {canInstall && (
+        <div className="mb-12 flex justify-center">
+          <GlassCard className="p-6 max-w-3xl w-full flex flex-col sm:flex-row items-center justify-between gap-4 border-accent-termux/20">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-accent-termux/10 rounded-lg">
+                <Smartphone className="w-6 h-6 text-accent-termux" />
+              </div>
+              <div className="text-center sm:text-left">
+                <h3 className="text-lg font-semibold text-text-primary">Install Terminal Reference</h3>
+                <p className="text-text-muted text-sm">Add to your home screen for offline access.</p>
+              </div>
+            </div>
+            <button
+              onClick={promptToInstall}
+              className="flex items-center gap-2 px-5 py-2.5 bg-accent-termux text-white font-medium rounded-lg hover:bg-accent-termux/90 transition-colors shadow-lg shadow-accent-termux/20"
+            >
+              <Download className="w-4 h-4" />
+              Install App
+            </button>
+          </GlassCard>
+        </div>
+      )}
+
       {/* Recently Viewed Section */}
       {recentCommands.length > 0 && (
         <div className="mb-12">
@@ -29,8 +55,8 @@ export default function Home() {
           </h2>
           <div className="flex flex-wrap gap-3">
             {recentCommands.map((cmd) => (
-              <Link 
-                key={cmd.id} 
+              <Link
+                key={cmd.id}
                 to={`/${cmd.environment}/${cmd.id}`}
                 className="flex items-center gap-3 p-3 bg-background-card/40 backdrop-blur-md border border-white/5 rounded-xl hover:border-white/20 transition-colors group"
               >
@@ -55,7 +81,7 @@ export default function Home() {
             <p className="mt-4 text-text-secondary">Commands for package management, file operations, and development on Android.</p>
           </GlassCard>
         </Link>
-        
+
         <Link to="/linux">
           <GlassCard className="p-8 hover:border-accent-linux/30 transition-colors h-full">
             <h2 className="text-2xl font-bold text-text-primary mb-2">Linux</h2>
@@ -63,7 +89,7 @@ export default function Home() {
             <p className="mt-4 text-text-secondary">Standard GNU/Linux commands for system administration, networking, and more.</p>
           </GlassCard>
         </Link>
-        
+
         <Link to="/cmd">
           <GlassCard className="p-8 hover:border-accent-cmd/30 transition-colors h-full">
             <h2 className="text-2xl font-bold text-text-primary mb-2">CMD</h2>
