@@ -1,0 +1,21 @@
+import type { Command } from '../types';
+import { termuxPackageCommands } from './termux/packageManagement';
+import { linuxFileCommands } from './linux/fileManagement';
+import { cmdFileCommands } from './cmd/fileDirectory';
+
+// Combine all commands into a single array
+export const allCommands: Command[] = [
+  ...termuxPackageCommands,
+  ...linuxFileCommands,
+  ...cmdFileCommands
+];
+
+// Helper function to get commands by environment
+export const getCommandsByEnvironment = (environment: string): Command[] => {
+  return allCommands.filter(cmd => cmd.environment === environment);
+};
+
+// Helper function to get a single command by its ID
+export const getCommandById = (id: string): Command | undefined => {
+  return allCommands.find(cmd => cmd.id === id);
+};
