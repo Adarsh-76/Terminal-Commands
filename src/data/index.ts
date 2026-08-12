@@ -1,11 +1,13 @@
 import type { Command } from '../types';
 import { termuxPackageCommands } from './termux/packageManagement';
+import { termuxFileCommands } from './termux/fileManagement';
 import { linuxFileCommands } from './linux/fileManagement';
 import { cmdFileCommands } from './cmd/fileDirectory';
 
 // Combine all commands into a single array
 export const allCommands: Command[] = [
   ...termuxPackageCommands,
+  ...termuxFileCommands,
   ...linuxFileCommands,
   ...cmdFileCommands
 ];
