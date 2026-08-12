@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router';
 import { motion } from 'framer-motion';
-import { Home, Terminal, Code2, SquareTerminal, Mail } from 'lucide-react';
+import { Home, Terminal, Code2, SquareTerminal } from 'lucide-react';
 
 export default function BottomNav() {
   const location = useLocation();
@@ -11,7 +11,6 @@ export default function BottomNav() {
     { path: '/termux', label: 'Termux', icon: Terminal, activeColor: 'text-accent-termux' },
     { path: '/linux', label: 'Linux', icon: Code2, activeColor: 'text-accent-linux' },
     { path: '/cmd', label: 'CMD', icon: SquareTerminal, activeColor: 'text-accent-cmd' },
-    { path: '/contact', label: 'Contact', icon: Mail, activeColor: 'text-text-primary' },
   ];
 
   return (

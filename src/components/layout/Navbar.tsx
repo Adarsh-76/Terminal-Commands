@@ -9,7 +9,6 @@ export default function Navbar() {
     { path: '/termux', label: 'Termux', activeColor: 'text-accent-termux', borderColor: 'border-accent-termux/50' },
     { path: '/linux', label: 'Linux', activeColor: 'text-accent-linux', borderColor: 'border-accent-linux/50' },
     { path: '/cmd', label: 'CMD', activeColor: 'text-accent-cmd', borderColor: 'border-accent-cmd/50' },
-    { path: '/contact', label: 'Contact', activeColor: 'text-text-primary', borderColor: 'border-white/20' },
   ];
 
   return (

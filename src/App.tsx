@@ -10,7 +10,6 @@ import ScrollToTopButton from './components/layout/ScrollToTopButton';
 const Home = lazy(() => import('./pages/Home'));
 const CommandEnvironmentPage = lazy(() => import('./pages/CommandEnvironmentPage'));
 const CommandDetailPage = lazy(() => import('./pages/CommandDetailPage'));
-const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const PageLoader = () => (
@@ -40,7 +39,6 @@ export default function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/:environment" element={<CommandEnvironmentPage />} />
                 <Route path="/:environment/:commandId" element={<CommandDetailPage />} />
-                <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </motion.div>
