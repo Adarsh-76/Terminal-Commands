@@ -25,7 +25,7 @@ export default function CommandDetailPage() {
 
   // Get all commands for the current environment to display at the end
   const allEnvCommands = getCommandsByEnvironment(command.environment);
-  
+
   // Track recently viewed
   const { addRecentlyViewed } = useRecentlyViewed();
   useEffect(() => {
@@ -33,9 +33,10 @@ export default function CommandDetailPage() {
   }, [command.id, addRecentlyViewed]);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <Link 
-        to={`/${command.environment}`} 
+    {/* Added pb-28 to prevent content from hiding behind the BottomNav */}
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-28">
+      <Link
+        to={`/${command.environment}`}
         className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors mb-8"
       >
         <ArrowLeft className="w-4 h-4" />
@@ -129,10 +130,10 @@ export default function CommandDetailPage() {
             {command.relatedCommands.map((relId) => {
               const relCmd = getCommandById(relId);
               if (!relCmd) return null;
-              
+
               return (
-                <Link 
-                  key={relId} 
+                <Link
+                  key={relId}
                   to={`/${relCmd.environment}/${relCmd.id}`}
                   className="px-3 py-1.5 bg-background-card border border-white/10 rounded-lg text-sm text-text-secondary hover:text-text-primary hover:border-white/20 transition-colors font-mono"
                 >
@@ -151,7 +152,7 @@ export default function CommandDetailPage() {
           </h2>
           <div className="flex flex-wrap gap-2">
             {command.popularPackages.map((pkg) => (
-              <span 
+              <span
                 key={pkg}
                 className="px-3 py-1.5 bg-background-subtle border border-white/10 rounded-lg text-sm text-accent-termux font-mono"
               >
