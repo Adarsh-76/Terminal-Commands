@@ -32,8 +32,8 @@ export default function CommandDetailPage() {
     addRecentlyViewed(command.id);
   }, [command.id, addRecentlyViewed]);
 
+  // Added pb-28 to prevent content from hiding behind the BottomNav
   return (
-    {/* Added pb-28 to prevent content from hiding behind the BottomNav */}
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-28">
       <Link
         to={`/${command.environment}`}
